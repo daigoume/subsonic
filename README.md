@@ -13,7 +13,7 @@ including Windows, Mac, Linux, OSX, and Unix variants.
 
 **Build notes**
 
-Latest release of Subsonic.
+Latest release of Subsonic 6.1.1.
 
 **Usage**
 

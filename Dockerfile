@@ -19,6 +19,8 @@ RUN echo "@commuedge https://nl.alpinelinux.org/alpine/edge/community" >> /etc/a
 COPY start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 
+RUN echo 127.0.0.1 subsonic.org >> /etc/hosts
+
 EXPOSE 4040
 
 VOLUME /config /media /playlists /podcasts

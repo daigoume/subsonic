@@ -9,7 +9,10 @@ ln -s /usr/bin/lame /config/transcode/lame
 
 chown -R subsonic:subsonic /config
 
-sleep 10 # avoid erros
+sleep 10 # avoid errors
+
+# stop subsonic calling home
+echo 127.0.0.1 subsonic.org >> /etc/hosts
 
 su subsonic << EOF
 java -Xmx${JVM_MEMORY}m \

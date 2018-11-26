@@ -24,6 +24,6 @@ EXPOSE 4040
 VOLUME /config /media /playlists /podcasts
 
 LABEL description "Your complete, personal media streamer." \
-      subsonic "Subsonic v6.1.1"
+      subsonic "Subsonic v6.1.4"
 
 CMD ["/sbin/tini","--","start.sh"]

@@ -1,9 +1,9 @@
-Subsonic Alpine docker image 
+Subsonic Alpine docker image
 ============================
 
 **Application**
 
-[Subsonic](http://http://www.subsonic.org)
+[Subsonic](www.subsonic.org)
 
 **Application description**
 
@@ -17,17 +17,19 @@ Latest release of Subsonic 6.1.6 with alpine:edge
 
 **Usage**
 
-- chech it really works with log dumps by
+Check it really works with log dumps by
 
 ```
 docker-compose up
 ```
 
-- or silently by
+or silently by
 
 ```
 docker-compose up -d
 ```
+
+then access to http://localhost:4040 .
 
 **Settings**
 
@@ -50,8 +52,8 @@ Add your music directory by editing as follows:
 +    - '/another/path:/media2'
 ```
 
-- You can add another music directory by adding another media path (like `/media2` in the above example).
-- Do not forget to add the path that you added above into [Settings] > [MEDIA FOLDERS] in the Subsonic web interface.
+- You can add other music directories by adding multiple media paths (like `/media2` in the above example).
+- Do not forget to add the paths (`/media`, `/media2` in above example) into [Settings] > [MEDIA FOLDERS] > [ADD MEDIA FOLDER] through the Subsonic web interface.
 
 **Force SSL(https)**
 
@@ -63,19 +65,21 @@ Redirect to https is forced by default. You can switch off this feature by editi
 +    - SSL=no
 ```
 
-**Access application**
+**Build**
 
-[`http://localhost:4040`](http://localhost:4040)
+`docker-compose build ./`
 
-```
+**Docker run command** 
+
+```bash
 docker run -d \
-	-p 4040:4040 \
-	-p 4050:4050 \
-	--name=Subsonic \
-	-e CONTEXT_PATH=\ \
-	-e SSL=yes \
-	-v /media/music/:/media \
-	-v /apps/docker/Subsonic:/config \
-	-v /etc/localtime:/etc/localtime:ro \
-	phasmatis/subsonic
+    -p 4040:4040 \
+    -p 4050:4050 \
+    --name=Subsonic \
+    -e CONTEXT_PATH=\ \
+    -e SSL=yes \
+    -v /media/music/:/media \
+    -v /apps/docker/Subsonic:/config \
+    -v /etc/localtime:/etc/localtime:ro \
+    phasmatis/subsonic
 ```

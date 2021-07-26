@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  subsonic:
+    image: daigoume/subsonic6.1.6_alpine
+    #build:
+    #  context: ./
+    #  dockerfile: ./Dockerfile
+    ports:
+      - '4040:4040'
+      - '4041:4041'
+    container_name: subsonic
+    environment:
+      - CONTEXT_PATH=/
+      - SSL=yes
+    volumes:
+      - './music:/media'
+      - './config:/config'
+      - '/etc/localtime:/etc/localtime:ro'

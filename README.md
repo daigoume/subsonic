@@ -13,30 +13,59 @@ including Windows, Mac, Linux, OSX, and Unix variants.
 
 **Build notes**
 
-Latest release of Subsonic 6.1.4.
+Latest release of Subsonic 6.1.6 with alpine:edge
 
 **Usage**
 
+- chech it really works with log dumps by
+
 ```
-docker run -d \
-	-p 4040:4040 \
-	-p 4041:4041 \
-	--name=<container name> \
-	-e CONTEXT_PATH=<root path> \
-	-e SSL=<yes|no> \
-	-v <path for media files>:/media \
-	-v <path for config files>:/config \
-	-v /etc/localtime:/etc/localtime:ro \
-	phasmatis/subsonic
+docker-compose up
 ```
 
-Please replace all user variables in the above command defined by <> with the correct values.
+- or silently by
+
+```
+docker-compose up -d
+```
+
+**Settings**
+
+Change publish ports by editing `docker-compose.yml` as follows:
+
+```diff
+  ports:
+-    - `4040:4040`
++    + `[http port]:4040`
+-    - `4041:4041`
++   + `[https port]:4041`
+```
+
+Add your music directory by editing as follows:
+
+```diff
+  volumes:
+-    - './music:/media'
++    - '/your/favorite/path:/media'
++    - '/another/path:/media2'
+```
+
+- You can add another music directory by adding another media path (like `/media2` in the above example).
+- Do not forget to add the path that you added above into [Settings] > [MEDIA FOLDERS] in the Subsonic web interface.
+
+**Force SSL(https)**
+
+Redirect to https is forced by default. You can switch off this feature by editing `docker-compose.yml` as follows:
+
+```diff
+  environment:
+-    - SSL=yes
++    - SSL=no
+```
 
 **Access application**
 
-`http://<host ip>:4040`
-
-**Example**
+[`http://localhost:4040`](http://localhost:4040)
 
 ```
 docker run -d \

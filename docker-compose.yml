@@ -14,6 +14,5 @@ services:
       - SSL=yes
     volumes:
       - './music:/media'
-      - './music2:/media2'
       - './config:/config'
       - '/etc/localtime:/etc/localtime:ro'
